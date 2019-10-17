@@ -54,14 +54,15 @@ $("article").each(function(i, element) {
 
         // Add the text and href of every link, and save them as properties of the result object
         result.title = $(this)
-          .find("h1")
+          .find("h3")
           .text();
         result.link = $(this)
           .find("a")
           .attr("href");
         result.body = $(this)
         .find("p")
-        .text();     
+        .text();   
+          
       // Create a new Article using the `result` object built from scraping
       db.Article.create(result)
       .then(function(dbArticle) {
@@ -145,5 +146,5 @@ app.post("/articles/:id", function(req, res) {
 
 // Start the server
 app.listen(PORT, function() {
-    console.log("App listening on localhost:" + PORT + "!");
+    console.log("App listening on http://localhost:" + PORT);
   });
